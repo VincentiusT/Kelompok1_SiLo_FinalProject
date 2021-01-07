@@ -45,12 +45,12 @@ public class ItemForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        tf_id = new javax.swing.JTextField();
-        tf_barcode = new javax.swing.JTextField();
-        tf_title = new javax.swing.JTextField();
-        tf_desc = new javax.swing.JTextField();
-        tf_manufacturer = new javax.swing.JTextField();
-        tf_url = new javax.swing.JTextField();
+        idTF = new javax.swing.JTextField();
+        barcodeTF = new javax.swing.JTextField();
+        titleTF = new javax.swing.JTextField();
+        descriptionTF = new javax.swing.JTextField();
+        manufacturerTF = new javax.swing.JTextField();
+        urlTF = new javax.swing.JTextField();
         submitBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
 
@@ -68,39 +68,39 @@ public class ItemForm extends javax.swing.JFrame {
 
         jLabel6.setText("url");
 
-        tf_id.addActionListener(new java.awt.event.ActionListener() {
+        idTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_idActionPerformed(evt);
+                idTFActionPerformed(evt);
             }
         });
 
-        tf_barcode.addActionListener(new java.awt.event.ActionListener() {
+        barcodeTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_barcodeActionPerformed(evt);
+                barcodeTFActionPerformed(evt);
             }
         });
 
-        tf_title.addActionListener(new java.awt.event.ActionListener() {
+        titleTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_titleActionPerformed(evt);
+                titleTFActionPerformed(evt);
             }
         });
 
-        tf_desc.addActionListener(new java.awt.event.ActionListener() {
+        descriptionTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_descActionPerformed(evt);
+                descriptionTFActionPerformed(evt);
             }
         });
 
-        tf_manufacturer.addActionListener(new java.awt.event.ActionListener() {
+        manufacturerTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_manufacturerActionPerformed(evt);
+                manufacturerTFActionPerformed(evt);
             }
         });
 
-        tf_url.addActionListener(new java.awt.event.ActionListener() {
+        urlTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_urlActionPerformed(evt);
+                urlTFActionPerformed(evt);
             }
         });
 
@@ -138,30 +138,30 @@ public class ItemForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(barcodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_title, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(titleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_desc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_manufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(manufacturerTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tf_url, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(urlTF, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -171,27 +171,27 @@ public class ItemForm extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(idTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tf_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(barcodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tf_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(tf_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(descriptionTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(tf_manufacturer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(manufacturerTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tf_url, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(urlTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitBtn)
@@ -202,40 +202,40 @@ public class ItemForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_idActionPerformed
+    private void idTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_idActionPerformed
+    }//GEN-LAST:event_idTFActionPerformed
 
-    private void tf_barcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_barcodeActionPerformed
+    private void barcodeTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barcodeTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_barcodeActionPerformed
+    }//GEN-LAST:event_barcodeTFActionPerformed
 
-    private void tf_titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_titleActionPerformed
+    private void titleTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_titleActionPerformed
+    }//GEN-LAST:event_titleTFActionPerformed
 
-    private void tf_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_descActionPerformed
+    private void descriptionTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_descActionPerformed
+    }//GEN-LAST:event_descriptionTFActionPerformed
 
-    private void tf_manufacturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_manufacturerActionPerformed
+    private void manufacturerTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manufacturerTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_manufacturerActionPerformed
+    }//GEN-LAST:event_manufacturerTFActionPerformed
 
-    private void tf_urlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_urlActionPerformed
+    private void urlTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urlTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_urlActionPerformed
+    }//GEN-LAST:event_urlTFActionPerformed
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        itemCtl.submit(tf_barcode.toString(), tf_desc.toString(), tf_manufacturer.toString(), tf_title.toString(), tf_url.toString());
+        itemCtl.submit(barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText());
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
-        itemCtl.update(tf_barcode.toString(), tf_desc.toString(), tf_manufacturer.toString(), tf_title.toString(), tf_url.toString());
+        itemCtl.update(barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText());
     }//GEN-LAST:event_updateBtnMouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -251,20 +251,20 @@ public class ItemForm extends javax.swing.JFrame {
     private ItemCtl itemCtl = new ItemCtl();
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField barcodeTF;
+    private javax.swing.JTextField descriptionTF;
+    private javax.swing.JTextField idTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField manufacturerTF;
     private javax.swing.JButton submitBtn;
-    private javax.swing.JTextField tf_barcode;
-    private javax.swing.JTextField tf_desc;
-    private javax.swing.JTextField tf_id;
-    private javax.swing.JTextField tf_manufacturer;
-    private javax.swing.JTextField tf_title;
-    private javax.swing.JTextField tf_url;
+    private javax.swing.JTextField titleTF;
     private javax.swing.JButton updateBtn;
+    private javax.swing.JTextField urlTF;
     // End of variables declaration//GEN-END:variables
 
     

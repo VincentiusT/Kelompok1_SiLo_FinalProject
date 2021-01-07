@@ -29,27 +29,27 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tf_barcode" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="barcodeTF" min="-2" pref="178" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tf_title" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="titleTF" min="-2" pref="178" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tf_desc" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="descriptionTF" min="-2" pref="178" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tf_manufacturer" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="manufacturerTF" min="-2" pref="178" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tf_id" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Component id="idTF" min="-2" pref="178" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -58,7 +58,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="tf_url" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="urlTF" min="-2" pref="178" max="-2" attributes="0"/>
                           <Component id="submitBtn" min="-2" pref="73" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -73,32 +73,32 @@
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_barcode" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="barcodeTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_title" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="titleTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_desc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="descriptionTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_manufacturer" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="manufacturerTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tf_url" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="urlTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -141,34 +141,34 @@
         <Property name="text" type="java.lang.String" value="url"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_id">
+    <Component class="javax.swing.JTextField" name="idTF">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_idActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_barcode">
+    <Component class="javax.swing.JTextField" name="barcodeTF">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_barcodeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="barcodeTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_title">
+    <Component class="javax.swing.JTextField" name="titleTF">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_titleActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="titleTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_desc">
+    <Component class="javax.swing.JTextField" name="descriptionTF">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_descActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descriptionTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_manufacturer">
+    <Component class="javax.swing.JTextField" name="manufacturerTF">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_manufacturerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manufacturerTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tf_url">
+    <Component class="javax.swing.JTextField" name="urlTF">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_urlActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="urlTFActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="submitBtn">

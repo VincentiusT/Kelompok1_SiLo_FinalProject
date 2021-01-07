@@ -16,14 +16,18 @@ public class DBHandler {
     }
     
     public void insertData(String barcode,String description, String manufacturer, String title, String url){
-        //insert data to database
+        //insert item data to database
     }
 
     
     public void updateData(String barcode,String description, String manufacturer, String title, String url)
     {
-        //update data to database
+        //update item data to database
 
+    }
+    
+    public void insertData(String invoiceNumber, String deliveryNoteNumber, String CustomerName, String orderDate, String deliveryDate, String status){
+        //insert delivery note data to database
     }
     
     public void changeStatus(String status) {
@@ -43,5 +47,6 @@ public class DBHandler {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
  
 }

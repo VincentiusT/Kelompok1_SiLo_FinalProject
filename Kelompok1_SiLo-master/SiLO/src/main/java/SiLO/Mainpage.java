@@ -19,6 +19,8 @@ public class Mainpage extends javax.swing.JFrame {
         initComponents();
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
+        deliveryNoteDetailPage = new DeliveryNoteDetailPage();
+        deliveryNoteDetailPage.setVisible(false);
         deliveryNoteForm = new DeliveryNoteForm();
         deliveryNoteCtl = new DeliveryNoteCtl(deliveryNoteForm);
         addNewItemForm = new ItemForm(1);
@@ -26,6 +28,7 @@ public class Mainpage extends javax.swing.JFrame {
         itemCtl = new ItemCtl(addNewItemForm, editItemForm);
         detailInvoicePage = new DetailInvoicePage();
         listInvoiceCtl = new ListInvoiceCtl();
+        
 
     }
 
@@ -385,11 +388,11 @@ public class Mainpage extends javax.swing.JFrame {
         
     }
 
-   
+    private DeliveryNoteDetailPage deliveryNoteDetailPage;
     private ItemForm editItemForm;
     private DetailInvoicePage detailInvoicePage;
-   private ListInvoiceCtl listInvoiceCtl;
-   private InvoiceCtl invoiceCtl;
+    private ListInvoiceCtl listInvoiceCtl;
+    private InvoiceCtl invoiceCtl;
     private ItemForm addNewItemForm;
     private DeliveryNoteForm deliveryNoteForm;
     private DeliveryNoteCtl deliveryNoteCtl;

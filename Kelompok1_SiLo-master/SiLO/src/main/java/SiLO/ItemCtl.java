@@ -11,7 +11,7 @@ package SiLO;
  */
 public class ItemCtl {
     
-    private DBHandler dbhandler;
+    private DBHandler dbhandler = new DBHandler();
     private Mainpage mainpage;
     
     private ItemForm addNewItemForm;
