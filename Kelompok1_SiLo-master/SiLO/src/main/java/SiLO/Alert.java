@@ -5,21 +5,41 @@
  */
 package SiLO;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  *
  * @author VincentT
  */
-public class SendingForm extends javax.swing.JFrame {
-
+public class Alert extends javax.swing.JFrame {
+    
+    private int timeLimit;
     /**
-     * Creates new form SendingForm
+     * Creates new form Alert
      */
-    public SendingForm(DeliveryNoteDetailPage deliveryNoteDetailPage) {
+    public Alert(int _timeLimit) {
         initComponents();
+        this.setVisible(false);
+        timeLimit = _timeLimit;
         
-        this.deliveryNoteDetailPage = deliveryNoteDetailPage;
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask(){
+            public void run(){
+                timeLimit--;
+                if(timeLimit<=0){
+                    closeAlert();
+                    timer.cancel();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0,1000);
     }
 
+    private void closeAlert(){
+        this.setVisible(false);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,52 +50,30 @@ public class SendingForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        sendBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ini sending form");
-
-        sendBtn.setText("Send");
-        sendBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sendBtnMouseClicked(evt);
-            }
-        });
+        jLabel1.setText("Alert");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(269, Short.MAX_VALUE)
-                .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(176, 176, 176)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
-                .addComponent(sendBtn)
-                .addGap(45, 45, 45))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void sendBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendBtnMouseClicked
-        //show alert message
-        Alert alert = new Alert(3);
-        alert.setVisible(true);
-        
-        deliveryNoteDetailPage.sendSoftCopyDone();
-    }//GEN-LAST:event_sendBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -94,28 +92,25 @@ public class SendingForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Alert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Alert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Alert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Alert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new SendingForm().setVisible(true);
+                //new Alert().setVisible(true);
             }
         });
     }
 
-    private DeliveryNoteDetailPage deliveryNoteDetailPage;
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton sendBtn;
     // End of variables declaration//GEN-END:variables
 }

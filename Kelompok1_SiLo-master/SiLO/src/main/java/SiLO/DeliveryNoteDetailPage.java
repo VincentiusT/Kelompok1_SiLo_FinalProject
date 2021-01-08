@@ -18,6 +18,7 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         initComponents();
         
         sendingForm = new SendingForm(this);
+        printDialog = new PrintDialog(this);
     }
 
     /**
@@ -45,6 +46,11 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         });
 
         printBtn.setText("Print");
+        printBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                printBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +85,10 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     private void emailBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailBtnMouseClicked
         sendingForm.setVisible(true); //show sending form
     }//GEN-LAST:event_emailBtnMouseClicked
+
+    private void printBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printBtnMouseClicked
+        printDialog.setVisible(true);
+    }//GEN-LAST:event_printBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -119,9 +129,22 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         this.deliveryNoteCtl = deliveryNoteCtl;
     }
     
+    public void sendSoftCopyDone(){
+        //berhasil dikirim
+        sendingForm.setVisible(false);
+        deliveryNoteCtl.sendSoftCopyDone();
+    }
+    
+    public void requestPrint(){
+        printDialog.setVisible(false);
+        
+        deliveryNoteCtl.requestPrint();
+        
+    }
     
     private DeliveryNoteCtl deliveryNoteCtl;
     private SendingForm sendingForm;
+    private PrintDialog printDialog;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton emailBtn;

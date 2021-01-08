@@ -42,4 +42,14 @@ public class DeliveryNoteCtl {
         showDeliveryNoteDescription();
         //refreshDeliveryNoteList
     }
+    
+    public void sendSoftCopyDone(){
+        //beres kirim softcopy
+        deliveryNoteDetailPage.setVisible(false);
+    }
+    
+    public void requestPrint(){
+        //print
+        deliveryNoteDetailPage.setVisible(false);
+    }
 }
