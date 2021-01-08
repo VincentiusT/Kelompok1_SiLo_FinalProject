@@ -1,0 +1,6 @@
+I001/1f3g4t/item1/ini item 1/man1/its.ac.id/12
+I002/nk32hb/item2/ini item 2/man2/if.its.ac.id/10
+I003/34kbfv/item3/ini item 3/man3/its.ac.id/11
+1/1/1/1/1/1/1
+2/3/5/2/4/2/2
+3/4/2/3/3/21/1

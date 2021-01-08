@@ -5,26 +5,33 @@
  */
 package SiLO;
 
+import java.util.List;
+
 /**
  *
  * @author feral
  */
 public class ListItemCtl {
 
-    
-    public void getListItem(){
-       
-        String[] results =   dbHandler.getListItem();
-        Item[] items = createItems(results);
-        mainpage.showListItem(items);
-    }
-    
-    private Item[] createItems (String[] results){
-        return null;
-    }
     private DBHandler dbHandler;
     private Item item[];
     private Mainpage mainpage;
+    
+    public ListItemCtl(DBHandler dbHandler, Mainpage mainpage){
+        this.dbHandler = dbHandler;
+        this.mainpage = mainpage;
+    }
+    
+    public void getListItem(){
+       
+        //Object[] results =   dbHandler.getListItem();
+        List<Item> items = createItems();
+        mainpage.showListItem(items);
+    }
+    
+    private List<Item> createItems (){
+        return dbHandler.getListItem();
+    }
     
     public void searchItem(String keyword){
         //dbHandler.searchItem(keyword);

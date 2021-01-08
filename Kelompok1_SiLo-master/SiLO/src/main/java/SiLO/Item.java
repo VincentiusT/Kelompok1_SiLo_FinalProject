@@ -12,6 +12,25 @@ package SiLO;
  */
 public class Item {
 
+    private String id;
+    private String barcode;
+    private String title;
+    private String description;
+    private String manufacturer;
+    private String URL;
+    private int numberOfStock;
+    
+    public Item(String id, String barcode, String title, String description, String manufacturer, String URL, int numberOfStock) {
+        this.id = id;
+        this.barcode = barcode;
+        this.title = title;
+        this.description = description;
+        this.manufacturer = manufacturer;
+        this.URL = URL;
+        this.numberOfStock = numberOfStock;
+    }
+
+    
     public String getId() {
         return id;
     }
@@ -34,6 +53,10 @@ public class Item {
     
     public String getDescription() {
         return description;
+    }
+    
+    public int getNumberOfStock() {
+        return numberOfStock;
     }
 
     public void setId(String id) {
@@ -60,14 +83,11 @@ public class Item {
         this.URL = URL;
     }
 
- 
+    public void setNumberOfStock(int numberOfStock) {
+        this.numberOfStock = numberOfStock;
+    }
     
-    private String id;
-    private String barcode;
-    private String title;
-    private String description;
-    private String manufacturer;
-    private String URL;
+    
 }
 
 

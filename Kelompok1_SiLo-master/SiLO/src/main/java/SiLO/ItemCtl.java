@@ -17,10 +17,11 @@ public class ItemCtl {
     private ItemForm addNewItemForm;
     private ItemForm editItemForm;
     
-    public ItemCtl(DBHandler dbHandler,ItemForm addNewItemForm, ItemForm editItemForm){
+    public ItemCtl(DBHandler dbHandler,Mainpage mainpage, ItemForm addNewItemForm, ItemForm editItemForm){
         this.addNewItemForm = addNewItemForm;
         this.editItemForm = editItemForm;
-        this.dbhandler = dbhandler;
+        this.dbhandler = dbHandler;
+        this.mainpage = mainpage;
     }
     
     public ItemCtl(){
@@ -35,16 +36,16 @@ public class ItemCtl {
         editItemForm.setVisible(true);
     }
     
-    public void submit(String barcode,String description, String manufacturer, String title, String url){
+    public void submit(String id, String barcode,String description, String manufacturer, String title, String url, int stock){
         addNewItemForm.setVisible(false);
-        dbhandler.insertData(barcode, description, manufacturer, title, url);
-        //mainpage.refreshItemList();
+        dbhandler.insertData(id,barcode, description, manufacturer, title, url,stock); 
+        mainpage.refreshItemList();
     }
     
-    public void update(String barcode,String description, String manufacturer, String title, String url){
+    public void update(String id,String barcode,String description, String manufacturer, String title, String url, int stock){
         editItemForm.setVisible(false);
-        dbhandler.updateData(barcode, description, manufacturer, title, url);
-        //mainpage.refreshItemList();
+        dbhandler.updateData(id, barcode, description, manufacturer, title, url,stock);
+        mainpage.refreshItemList();
     }
     
     
