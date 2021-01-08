@@ -17,7 +17,6 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
     public DeliveryNoteForm() {
         initComponents();
         
-        deliveryNoteCtl = new DeliveryNoteCtl(this);
         confirmationMessage = new ConfirmationMessage(this);
         confirmationMessage.setVisible(false);
     }
@@ -173,6 +172,10 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
                 orderDateTF.getText(), deliveryDateTF.getText(), statusTF.getText());
     }
 
+    public void setController(DeliveryNoteCtl deliveryNoteCtl){
+        this.deliveryNoteCtl = deliveryNoteCtl;
+    }
+    
     ConfirmationMessage confirmationMessage;
     DeliveryNoteCtl deliveryNoteCtl;
     

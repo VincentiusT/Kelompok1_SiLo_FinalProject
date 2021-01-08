@@ -10,6 +10,13 @@ package SiLO;
  * @author feral
  */
 public class ListInvoiceCtl {
+    
+    
+    
+    public ListInvoiceCtl(DBHandler dbHandler){
+        this.dbHandler = dbHandler;
+    }
+    
     public void getListInvoice(){
        
         String[] results =   dbHandler.getListInvoice();

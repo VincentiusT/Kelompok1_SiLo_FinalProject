@@ -11,7 +11,7 @@ package SiLO;
  */
 public class DeliveryNoteCtl {
     
-    private DBHandler dbHandler = new DBHandler();
+    private DBHandler dbHandler;
     private DeliveryNoteForm deliveryNoteForm;
     private DeliveryNoteDetailPage deliveryNoteDetailPage;
     
@@ -19,12 +19,18 @@ public class DeliveryNoteCtl {
         
     }
     
-    public DeliveryNoteCtl(DeliveryNoteForm deliveryNoteForm){
+    public DeliveryNoteCtl(DBHandler dbHandler,DeliveryNoteForm deliveryNoteForm, DeliveryNoteDetailPage deliveryNoteDetailPage){
         this.deliveryNoteForm = deliveryNoteForm;
+        this.deliveryNoteDetailPage = deliveryNoteDetailPage;
+        this.dbHandler = dbHandler;
     }
     
     public void requestDeliveryNoteForm(){
         deliveryNoteForm.setVisible(true);
+    }
+    
+    public void showDeliveryNoteDescription(){
+        deliveryNoteDetailPage.setVisible(true);
     }
     
     public void addNewDeliveryNoteData(String invoiceNumber,String deliveryNoteNumber,String customerName,String orderDate,
@@ -33,6 +39,7 @@ public class DeliveryNoteCtl {
 //        System.out.println(invoiceNumber+deliveryNoteNumber+customerName+ orderDate+ deliveryDate+status);
         deliveryNoteForm.setVisible(false);
         
-        //deliveryNoteDetailPage.setVisible(true);
+        showDeliveryNoteDescription();
+        //refreshDeliveryNoteList
     }
 }

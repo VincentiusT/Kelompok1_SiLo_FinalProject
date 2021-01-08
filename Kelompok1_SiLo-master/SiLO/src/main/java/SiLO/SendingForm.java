@@ -9,15 +9,15 @@ package SiLO;
  *
  * @author VincentT
  */
-public class DeliveryNoteDetailPage extends javax.swing.JFrame {
+public class SendingForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form DeliveryNoteDetailPage
+     * Creates new form SendingForm
      */
-    public DeliveryNoteDetailPage() {
+    public SendingForm(DeliveryNoteDetailPage deliveryNoteDetailPage) {
         initComponents();
         
-        sendingForm = new SendingForm(this);
+        this.deliveryNoteDetailPage = deliveryNoteDetailPage;
     }
 
     /**
@@ -30,55 +30,46 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        emailBtn = new javax.swing.JButton();
-        printBtn = new javax.swing.JButton();
+        sendBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("delivery note detail");
+        jLabel1.setText("ini sending form");
 
-        emailBtn.setText("Email");
-        emailBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        sendBtn.setText("Send");
+        sendBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                emailBtnMouseClicked(evt);
+                sendBtnMouseClicked(evt);
             }
         });
-
-        printBtn.setText("Print");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1)
-                .addContainerGap(159, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(emailBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(printBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addGap(173, 173, 173)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailBtn)
-                    .addComponent(printBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(sendBtn)
                 .addGap(52, 52, 52))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailBtnMouseClicked
-        sendingForm.setVisible(true); //show sending form
-    }//GEN-LAST:event_emailBtnMouseClicked
+    private void sendBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendBtnMouseClicked
+        //show alert message
+    }//GEN-LAST:event_sendBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -97,35 +88,28 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SendingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeliveryNoteDetailPage().setVisible(true);
+                //new SendingForm().setVisible(true);
             }
         });
     }
 
-    public void setController(DeliveryNoteCtl deliveryNoteCtl){
-        this.deliveryNoteCtl = deliveryNoteCtl;
-    }
-    
-    
-    private DeliveryNoteCtl deliveryNoteCtl;
-    private SendingForm sendingForm;
+    private DeliveryNoteDetailPage deliveryNoteDetailPage;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton emailBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton printBtn;
+    private javax.swing.JButton sendBtn;
     // End of variables declaration//GEN-END:variables
 }

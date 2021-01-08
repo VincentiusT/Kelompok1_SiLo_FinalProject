@@ -11,15 +11,16 @@ package SiLO;
  */
 public class ItemCtl {
     
-    private DBHandler dbhandler = new DBHandler();
+    private DBHandler dbhandler;
     private Mainpage mainpage;
     
     private ItemForm addNewItemForm;
     private ItemForm editItemForm;
     
-    public ItemCtl(ItemForm addNewItemForm, ItemForm editItemForm){
+    public ItemCtl(DBHandler dbHandler,ItemForm addNewItemForm, ItemForm editItemForm){
         this.addNewItemForm = addNewItemForm;
         this.editItemForm = editItemForm;
+        this.dbhandler = dbhandler;
     }
     
     public ItemCtl(){

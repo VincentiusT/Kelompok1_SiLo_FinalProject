@@ -14,22 +14,40 @@ public class Mainpage extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    static DBHandler dbHandler;
+    static DeliveryNoteDetailPage deliveryNoteDetailPage;
+    static ItemForm editItemForm;
+    static DetailInvoicePage detailInvoicePage;
+    static ListInvoiceCtl listInvoiceCtl;
+    static InvoiceCtl invoiceCtl;
+    static ItemForm addNewItemForm;
+    static DeliveryNoteForm deliveryNoteForm;
+    static DeliveryNoteCtl deliveryNoteCtl;
+    static ListItemCtl listItemCtl;
+    static ItemCtl itemCtl;
+    
     public Mainpage() {
         
         initComponents();
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
+        
+        dbHandler = new DBHandler();
         deliveryNoteDetailPage = new DeliveryNoteDetailPage();
-        deliveryNoteDetailPage.setVisible(false);
         deliveryNoteForm = new DeliveryNoteForm();
-        deliveryNoteCtl = new DeliveryNoteCtl(deliveryNoteForm);
         addNewItemForm = new ItemForm(1);
         editItemForm = new ItemForm(2);
-        itemCtl = new ItemCtl(addNewItemForm, editItemForm);
         detailInvoicePage = new DetailInvoicePage();
-        listInvoiceCtl = new ListInvoiceCtl();
         
-
+        deliveryNoteCtl = new DeliveryNoteCtl(dbHandler,deliveryNoteForm, deliveryNoteDetailPage);
+        itemCtl = new ItemCtl(dbHandler,addNewItemForm, editItemForm);
+        listInvoiceCtl = new ListInvoiceCtl(dbHandler);
+        
+        deliveryNoteForm.setController(deliveryNoteCtl);
+        deliveryNoteDetailPage.setController(deliveryNoteCtl);
+        
+        deliveryNoteDetailPage.setVisible(false);
     }
 
     /**
@@ -388,16 +406,7 @@ public class Mainpage extends javax.swing.JFrame {
         
     }
 
-    private DeliveryNoteDetailPage deliveryNoteDetailPage;
-    private ItemForm editItemForm;
-    private DetailInvoicePage detailInvoicePage;
-    private ListInvoiceCtl listInvoiceCtl;
-    private InvoiceCtl invoiceCtl;
-    private ItemForm addNewItemForm;
-    private DeliveryNoteForm deliveryNoteForm;
-    private DeliveryNoteCtl deliveryNoteCtl;
-    private ListItemCtl listItemCtl;
-    private ItemCtl itemCtl;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JMenu createDeliveryNoteMenu;

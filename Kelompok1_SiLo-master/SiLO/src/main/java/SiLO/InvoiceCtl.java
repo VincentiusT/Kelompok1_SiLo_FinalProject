@@ -14,6 +14,10 @@ public class InvoiceCtl {
     private DBHandler dbHandler;
     private Mainpage mainPage;
     
+    public InvoiceCtl(DBHandler dbHandler){
+        this.dbHandler = dbHandler;
+    }
+    
     public void getInvoiceDescription(){
         //String[] result = dbHandler.getInvoiceDescriptionDB();
         //Invoice[] invoice = createInvoice(result);
