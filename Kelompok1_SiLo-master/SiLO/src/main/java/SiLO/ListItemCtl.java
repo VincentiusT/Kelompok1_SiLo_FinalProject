@@ -25,16 +25,14 @@ public class ListItemCtl {
     public void getListItem(){
        
         //Object[] results =   dbHandler.getListItem();
-        List<Item> items = createItems();
+        List<Item> items = dbHandler.getListItem();
         mainpage.showListItem(items);
     }
     
-    private List<Item> createItems (){
-        return dbHandler.getListItem();
-    }
     
     public void searchItem(String keyword){
-        //dbHandler.searchItem(keyword);
+        List<Item> items = dbHandler.searchItem(keyword);
+        mainpage.showListItem(items);
     }
 }
 

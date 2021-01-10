@@ -1,3 +1,2 @@
-I000/1f3g4t/item1/ini item 1/man1/its.ac.id/12
-I002/nk32hb/item2/ini item 2/man2/if.its.ac.id/10
-a/a/a/a/a/a/2
+a/b/c/e/f/g/10
+as/bb/ee/g/f/r/2

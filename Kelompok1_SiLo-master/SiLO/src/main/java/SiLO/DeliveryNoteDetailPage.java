@@ -14,6 +14,8 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     /**
      * Creates new form DeliveryNoteDetailPage
      */
+    //public DBHandler dbHandler;
+    
     public DeliveryNoteDetailPage() {
         initComponents();
         
@@ -33,10 +35,16 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         emailBtn = new javax.swing.JButton();
         printBtn = new javax.swing.JButton();
+        preparingBtn = new javax.swing.JButton();
+        signBtn = new javax.swing.JButton();
+        pendingBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        invoiceNumberLbl = new javax.swing.JLabel();
+        deliveryNoteNumberLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("delivery note detail");
+        jLabel1.setText("invoice number :");
 
         emailBtn.setText("Email");
         emailBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,31 +60,71 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
             }
         });
 
+        preparingBtn.setText("preparing");
+
+        signBtn.setText("sign");
+
+        pendingBtn.setText("pending");
+        pendingBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingBtnMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("invoice number :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1)
-                .addContainerGap(159, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(emailBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(printBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pendingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(preparingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(signBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(printBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(invoiceNumberLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deliveryNoteNumberLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(152, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailBtn)
-                    .addComponent(printBtn))
-                .addGap(52, 52, 52))
+                    .addComponent(jLabel1)
+                    .addComponent(invoiceNumberLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(deliveryNoteNumberLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(pendingBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(signBtn)
+                    .addComponent(emailBtn))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(printBtn)
+                    .addComponent(preparingBtn))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -89,6 +137,10 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     private void printBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printBtnMouseClicked
         printDialog.setVisible(true);
     }//GEN-LAST:event_printBtnMouseClicked
+
+    private void pendingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingBtnMouseClicked
+        deliveryNoteCtl.requestChangeStatus("pending", deliveryNoteNumberLbl.getText());
+    }//GEN-LAST:event_pendingBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -142,13 +194,24 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         
     }
     
+    public void setCurrentDeliveryNote(DeliveryNote dn){
+        invoiceNumberLbl.setText(String.valueOf(dn.getInvoiceNumber()));
+        deliveryNoteNumberLbl.setText(String.valueOf(dn.getDeliveryNoteNumber()));
+    }
+    
     private DeliveryNoteCtl deliveryNoteCtl;
     private SendingForm sendingForm;
     private PrintDialog printDialog;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel deliveryNoteNumberLbl;
     private javax.swing.JButton emailBtn;
+    private javax.swing.JLabel invoiceNumberLbl;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton pendingBtn;
+    private javax.swing.JButton preparingBtn;
     private javax.swing.JButton printBtn;
+    private javax.swing.JButton signBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package SiLO;
 
+import java.text.ParseException;
+
 /**
  *
  * @author VincentT
@@ -166,7 +168,7 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
         });
     }
     
-    public void confirm(){
+    public void confirm() throws ParseException{
         confirmationMessage.setVisible(false);
         deliveryNoteCtl.addNewDeliveryNoteData(invoiceNumberTF.getText(), deliveryNoteNumberTF.getText(), customerNameTF.getText(),
                 orderDateTF.getText(), deliveryDateTF.getText(), statusTF.getText());

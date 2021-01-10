@@ -19,6 +19,7 @@ public class ItemForm extends javax.swing.JFrame {
     public ItemForm(int type) {
         initComponents();
         
+        
         if(type==1){ //submit
             submitBtn.setVisible(true);
             updateBtn.setVisible(false);
@@ -241,7 +242,13 @@ public class ItemForm extends javax.swing.JFrame {
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        itemCtl.submit(idTF.getText(),barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText()));
+        System.out.println("sdjasabfiusdfisud :_" + idTF.getText()+"_");
+        if(idTF.getText().equals("") || barcodeTF.getText().equals("") || descriptionTF.getText().equals("") ||
+                manufacturerTF.getText().equals("") || titleTF.getText().equals("") || urlTF.getText().equals("") ||numberOfStockTF.getText().equals("") ){
+            dialogBox.setVisible(true);
+        }
+        else
+            itemCtl.submit(idTF.getText(),barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText()));
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
@@ -256,8 +263,14 @@ public class ItemForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    public void setController(ItemCtl itemCtl){
+    public void cancelAddNewItem(){
+        dialogBox.setVisible(false);
+        itemCtl.cancelAddNewItem();
+    }
+    
+    public void setController(ItemCtl itemCtl, DialogBox dialogBox){
         this.itemCtl = itemCtl;
+        this.dialogBox = dialogBox;
     }
     
     public void setEditData(Item item){
@@ -271,6 +284,7 @@ public class ItemForm extends javax.swing.JFrame {
     }
     
     private ItemCtl itemCtl;
+    private DialogBox dialogBox;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barcodeTF;

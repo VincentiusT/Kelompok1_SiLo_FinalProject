@@ -32,6 +32,6 @@ public class InvoiceCtl {
     }
 
     void requestChangeStatus(String status) {
-        dbHandler.changeStatus(status);
+        dbHandler.changeInvoiceStatus(status);
     }
 }

@@ -52,5 +52,8 @@ public class ItemCtl {
         mainpage.refreshItemList();
     }
     
+    public void cancelAddNewItem(){
+        addNewItemForm.setVisible(false);
+    }
     
 }

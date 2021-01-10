@@ -5,6 +5,10 @@
  */
 package SiLO;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author VincentT
@@ -71,7 +75,11 @@ public class ConfirmationMessage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonMouseClicked
-        deliveryNoteForm.confirm();
+        try {
+            deliveryNoteForm.confirm();
+        } catch (ParseException ex) {
+            Logger.getLogger(ConfirmationMessage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_okButtonMouseClicked
 
     /**

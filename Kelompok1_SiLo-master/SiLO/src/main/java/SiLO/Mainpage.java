@@ -1,6 +1,9 @@
 package SiLO;
 
+import java.text.ParseException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -27,8 +30,10 @@ public class Mainpage extends javax.swing.JFrame {
     static ItemForm addNewItemForm;
     static DeliveryNoteForm deliveryNoteForm;
     static DeliveryNoteCtl deliveryNoteCtl;
+    static ListDeliveryNoteCtl listDeliveryNoteCtl;
     static ListItemCtl listItemCtl;
     static ItemCtl itemCtl;
+    static DialogBox dialogBox;
     
 //    private DBHandler dbHandler;
 //    private DeliveryNoteDetailPage deliveryNoteDetailPage;
@@ -42,7 +47,7 @@ public class Mainpage extends javax.swing.JFrame {
 //    private ListItemCtl listItemCtl;
 //    private ItemCtl itemCtl;
     
-    public Mainpage() {
+    public Mainpage() throws ParseException {
         
         initComponents();
         jPanel1.setVisible(false);
@@ -51,26 +56,30 @@ public class Mainpage extends javax.swing.JFrame {
         
         dbHandler = new DBHandler();
         
+        
         deliveryNoteDetailPage = new DeliveryNoteDetailPage();
         deliveryNoteForm = new DeliveryNoteForm();
         addNewItemForm = new ItemForm(1);
         editItemForm = new ItemForm(2);
         detailInvoicePage = new DetailInvoicePage();
+        dialogBox = new DialogBox(addNewItemForm);
         
-        deliveryNoteCtl = new DeliveryNoteCtl(dbHandler,deliveryNoteForm, deliveryNoteDetailPage);
+        deliveryNoteCtl = new DeliveryNoteCtl(dbHandler,this,deliveryNoteForm, deliveryNoteDetailPage);
+        listDeliveryNoteCtl = new ListDeliveryNoteCtl(dbHandler,this);
         itemCtl = new ItemCtl(dbHandler,this,addNewItemForm, editItemForm);
         listItemCtl = new ListItemCtl(dbHandler,this);
         listInvoiceCtl = new ListInvoiceCtl(dbHandler);
         invoiceCtl = new InvoiceCtl(dbHandler);
         
-        addNewItemForm.setController(itemCtl);
-        editItemForm.setController(itemCtl);
+        addNewItemForm.setController(itemCtl, dialogBox);
+        editItemForm.setController(itemCtl, dialogBox);
         deliveryNoteForm.setController(deliveryNoteCtl);
         deliveryNoteDetailPage.setController(deliveryNoteCtl);
         
         deliveryNoteDetailPage.setVisible(false);
         
         refreshItemList();
+        refreshDeliveryNoteList();
     }
 
     /**
@@ -97,8 +106,8 @@ public class Mainpage extends javax.swing.JFrame {
         viewBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        deliveryNoteTable = new javax.swing.JTable();
-        searchDeliveryNoteTF1 = new javax.swing.JTextField();
+        listDeliveryNote = new javax.swing.JTable();
+        searchDeliveryNoteTF = new javax.swing.JTextField();
         searchDeliveyNoteBtn = new javax.swing.JButton();
         viewDeliveryNoteBtn = new javax.swing.JButton();
         menuMB = new javax.swing.JMenuBar();
@@ -271,23 +280,20 @@ public class Mainpage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        deliveryNoteTable.setModel(new javax.swing.table.DefaultTableModel(
+        listDeliveryNote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Invoice Number", "Delivery Note Number", "Customer Name", "Order Date", "Delivery Date", "Status"
             }
         ));
-        jScrollPane3.setViewportView(deliveryNoteTable);
+        jScrollPane3.setViewportView(listDeliveryNote);
 
-        searchDeliveryNoteTF1.setText("search delivery note");
-        searchDeliveryNoteTF1.addActionListener(new java.awt.event.ActionListener() {
+        searchDeliveryNoteTF.setText("search delivery note");
+        searchDeliveryNoteTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchDeliveryNoteTF1ActionPerformed(evt);
+                searchDeliveryNoteTFActionPerformed(evt);
             }
         });
 
@@ -309,7 +315,7 @@ public class Mainpage extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(searchDeliveryNoteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchDeliveryNoteTF, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchDeliveyNoteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(viewDeliveryNoteBtn)))
@@ -319,7 +325,7 @@ public class Mainpage extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchDeliveryNoteTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchDeliveryNoteTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchDeliveyNoteBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -436,11 +442,11 @@ public class Mainpage extends javax.swing.JFrame {
     }//GEN-LAST:event_viewBtnMouseClicked
 
     private void searchItemBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchItemBtnMouseClicked
-        listItemCtl.searchItem(searchItemTF.toString());
+        listItemCtl.searchItem(searchItemTF.getText());
     }//GEN-LAST:event_searchItemBtnMouseClicked
 
     private void searchInvoiceBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchInvoiceBtnMouseClicked
-        listInvoiceCtl.searchInvoice(searchInvoiceTF.toString());
+        listInvoiceCtl.searchInvoice(searchInvoiceTF.getText());
         // TODO add your handling code here:
     }//GEN-LAST:event_searchInvoiceBtnMouseClicked
 
@@ -454,12 +460,12 @@ public class Mainpage extends javax.swing.JFrame {
     }//GEN-LAST:event_createDeliveryNoteMenuMouseClicked
 
     private void searchDeliveyNoteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchDeliveyNoteBtnMouseClicked
-        // TODO add your handling code here:
+        listDeliveryNoteCtl.searchDeliveryNote(searchDeliveryNoteTF.getText());
     }//GEN-LAST:event_searchDeliveyNoteBtnMouseClicked
 
-    private void searchDeliveryNoteTF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDeliveryNoteTF1ActionPerformed
+    private void searchDeliveryNoteTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDeliveryNoteTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchDeliveryNoteTF1ActionPerformed
+    }//GEN-LAST:event_searchDeliveryNoteTFActionPerformed
 
     private void viewDeliveryNoteMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDeliveryNoteMenuMouseClicked
         jPanel2.setVisible(false);
@@ -467,6 +473,25 @@ public class Mainpage extends javax.swing.JFrame {
         jPanel3.setVisible(true);
     }//GEN-LAST:event_viewDeliveryNoteMenuMouseClicked
 
+    public void showListDeliveryNote(List<DeliveryNote> deliveryNotes){
+        DefaultTableModel model = (DefaultTableModel) listDeliveryNote.getModel();
+
+        int rowCount = listDeliveryNote.getRowCount();
+        if(rowCount!=0){
+            for(int i = rowCount-1;i>=0;i--){
+                model.removeRow(i);
+            }
+        }
+        for(int i=0;i<deliveryNotes.size();i++){
+            Object[] row = {deliveryNotes.get(i).getInvoiceNumber(),deliveryNotes.get(i).getDeliveryNoteNumber(),
+                            deliveryNotes.get(i).getCustomerName(),deliveryNotes.get(i).getOrderDate(),deliveryNotes.get(i).getDeliveryDate(),
+                            deliveryNotes.get(i).getStatus()};
+            model.addRow(row);
+            
+            //showEditButton(delivery, i);
+        }
+    }
+    
     public void showListItem(List<Item> items) {
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
@@ -520,6 +545,10 @@ public class Mainpage extends javax.swing.JFrame {
         //refresh data on table
     }
     
+    public void refreshDeliveryNoteList(){
+        listDeliveryNoteCtl.getListDeliveryNote();
+    }
+    
     public static void showInvoiceDescription() {
         detailInvoicePage.setVisible(true);
     }
@@ -554,7 +583,11 @@ public class Mainpage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mainpage().setVisible(true);
+                try {
+                    new Mainpage().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Mainpage.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }); 
         
@@ -565,7 +598,6 @@ public class Mainpage extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JPanel btnHolder;
     private javax.swing.JMenu createDeliveryNoteMenu;
-    private javax.swing.JTable deliveryNoteTable;
     private javax.swing.JMenu deliveryNotesMI;
     private javax.swing.JMenu invoiceMI;
     private javax.swing.JTable invoiceTable;
@@ -576,9 +608,10 @@ public class Mainpage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable listDeliveryNote;
     private javax.swing.JTable listItem;
     private javax.swing.JMenuBar menuMB;
-    private javax.swing.JTextField searchDeliveryNoteTF1;
+    private javax.swing.JTextField searchDeliveryNoteTF;
     private javax.swing.JButton searchDeliveyNoteBtn;
     private javax.swing.JButton searchInvoiceBtn;
     private javax.swing.JTextField searchInvoiceTF;

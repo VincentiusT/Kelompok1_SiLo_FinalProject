@@ -11,6 +11,8 @@ package SiLO;
  * @author feral
  */
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DeliveryNote {
@@ -20,7 +22,19 @@ public class DeliveryNote {
     Date orderDate = new Date();
     Date deliveryDate = new Date();
     private String status;
+    
+    SimpleDateFormat formatter;
 
+    public DeliveryNote(int invoiceNumber, int deliveryNoteNumber, String customerName, Date orderDate, Date deliveryDate, String status) throws ParseException{
+        this.invoiceNumber = invoiceNumber;
+        this.deliveryNoteNumber = deliveryNoteNumber;
+        this.customerName = customerName;
+        formatter =new SimpleDateFormat("dd-MMM-yyyy"); 
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+    }
+    
     public int getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -67,6 +81,14 @@ public class DeliveryNote {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    public String getOrderDateString() {
+        return formatter.format(orderDate);
+    }
+
+    public String getDeliveryDateString() {
+        return formatter.format(deliveryDate);
     }
     
     
