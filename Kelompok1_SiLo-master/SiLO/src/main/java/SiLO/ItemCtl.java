@@ -11,6 +11,8 @@ package SiLO;
  */
 public class ItemCtl {
     
+    int editItemIndex = 0;
+    
     private DBHandler dbhandler;
     private Mainpage mainpage;
     
@@ -32,8 +34,10 @@ public class ItemCtl {
         addNewItemForm.setVisible(true);
     }
     
-    public void requestEditItemForm(){
+    public void requestEditItemForm(Item item, int index){
+        editItemForm.setEditData(item);
         editItemForm.setVisible(true);
+        editItemIndex = index;
     }
     
     public void submit(String id, String barcode,String description, String manufacturer, String title, String url, int stock){
@@ -44,7 +48,7 @@ public class ItemCtl {
     
     public void update(String id,String barcode,String description, String manufacturer, String title, String url, int stock){
         editItemForm.setVisible(false);
-        dbhandler.updateData(id, barcode, description, manufacturer, title, url,stock);
+        dbhandler.updateData(id, barcode, description, manufacturer, title, url,stock, editItemIndex);
         mainpage.refreshItemList();
     }
     

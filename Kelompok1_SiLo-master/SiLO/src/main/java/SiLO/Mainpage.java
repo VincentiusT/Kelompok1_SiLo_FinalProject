@@ -88,7 +88,7 @@ public class Mainpage extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         searchItemTF = new javax.swing.JTextField();
         searchItemBtn = new javax.swing.JButton();
-        editBtn = new javax.swing.JButton();
+        btnHolder = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
@@ -160,31 +160,38 @@ public class Mainpage extends javax.swing.JFrame {
             }
         });
 
-        editBtn.setText("Edit");
-        editBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editBtnMouseClicked(evt);
-            }
-        });
-        editBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editBtnActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout btnHolderLayout = new javax.swing.GroupLayout(btnHolder);
+        btnHolder.setLayout(btnHolderLayout);
+        btnHolderLayout.setHorizontalGroup(
+            btnHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 69, Short.MAX_VALUE)
+        );
+        btnHolderLayout.setVerticalGroup(
+            btnHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 88, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(addBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(searchItemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchItemBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addBtn)
+                        .addGap(369, 369, 369))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(searchItemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(searchItemBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 84, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(425, Short.MAX_VALUE)
+                    .addComponent(btnHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,10 +203,13 @@ public class Mainpage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn)
-                    .addComponent(editBtn))
+                .addComponent(addBtn)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(74, Short.MAX_VALUE)
+                    .addComponent(btnHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(46, Short.MAX_VALUE)))
         );
 
         searchItemBtn.getAccessibleContext().setAccessibleName("searchItemBtn");
@@ -361,11 +371,12 @@ public class Mainpage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,14 +428,6 @@ public class Mainpage extends javax.swing.JFrame {
     }//GEN-LAST:event_searchItemBtnActionPerformed
 
 
-    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editBtnActionPerformed
-
-    private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked
-        itemCtl.requestEditItemForm(); 
-    }//GEN-LAST:event_editBtnMouseClicked
-
     private void viewBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBtnMouseClicked
        detailInvoicePage.setVisible(true);
        detailInvoicePage.setSize(300,300);
@@ -470,7 +473,6 @@ public class Mainpage extends javax.swing.JFrame {
         jPanel1.setVisible(true);
         addBtn.setVisible(true);
         
-
         DefaultTableModel model = (DefaultTableModel) listItem.getModel();
 
         int rowCount = listItem.getRowCount();
@@ -479,15 +481,35 @@ public class Mainpage extends javax.swing.JFrame {
                 model.removeRow(i);
             }
         }
-        
         for(int i=0;i<items.size();i++){
             Object[] row = {items.get(i).getId(), items.get(i).getTitle(), items.get(i).getManufacturer(), items.get(i).getNumberOfStock()};
             model.addRow(row);
+            
+            showEditButton(items, i);
         }
-       
     }
     
-      public void showListInvoice(Invoice[] invoices) {
+    public void showEditButton(List<Item> items, int i){
+        editButtons = new javax.swing.JButton[items.size()];
+        
+        editButtons[i] = new javax.swing.JButton("Edit");
+        editButtons[i].setSize(60,15);
+        editButtons[i].setLocation(0, 16 * i);
+        editButtons[i].setName(items.get(i).toString());
+        editButtons[i].addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onEditClick(items.get(i), i);
+            }
+        });
+            
+        btnHolder.add(editButtons[i]);
+    }
+    
+    public void onEditClick(Item item, int index){
+        itemCtl.requestEditItemForm(item, index);
+    }
+    
+    public void showListInvoice(Invoice[] invoices) {
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
         jPanel1.setVisible(true); 
@@ -538,13 +560,13 @@ public class Mainpage extends javax.swing.JFrame {
         
     }
 
-    
+    private javax.swing.JButton[] editButtons;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JPanel btnHolder;
     private javax.swing.JMenu createDeliveryNoteMenu;
     private javax.swing.JTable deliveryNoteTable;
     private javax.swing.JMenu deliveryNotesMI;
-    private javax.swing.JButton editBtn;
     private javax.swing.JMenu invoiceMI;
     private javax.swing.JTable invoiceTable;
     private javax.swing.JMenu itemMI;

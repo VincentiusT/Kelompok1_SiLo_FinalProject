@@ -31,7 +31,6 @@ public class DBHandler {
     
     public void createItemData(){
         items = new ArrayList<Item>();
-        
         try{
             File itemDb = new File("ItemData.txt");
             Scanner scanner = new Scanner(itemDb);
@@ -40,11 +39,8 @@ public class DBHandler {
                 String[] str = data.split("/");
                 //System.out.println(str[0] + "  " + str[1] + "  " + str[2] + "  " + str[3]);
                 items.add(new Item(str[0], str[1], str[2], str[3], str[4], str[5], Integer.parseInt(str[6])));
-               
             }
         } catch(FileNotFoundException e){}
-        
-        
     }
     
     public void createInvoiceData(){
@@ -62,10 +58,8 @@ public class DBHandler {
     public void insertData(String id,String barcode,String description, String manufacturer, String title, String url, int stock){
         //insert item data to database
         items.add(new Item(id,barcode,description, manufacturer, title, url, stock));
-        
         try{
             FileWriter writer = new FileWriter("ItemData.txt");
-            
             for(int i=0; i<items.size(); i++){
                 Item temp = items.get(i);
                 writer.write(
@@ -85,10 +79,36 @@ public class DBHandler {
     }
 
     
-    public void updateData(String id,String barcode,String description, String manufacturer, String title, String url, int stock)
+    public void updateData(String id,String barcode,String description, String manufacturer, String title, String url, int stock, int index)
     {
         //update item data to database
-
+        items.get(index).setId(id);
+        items.get(index).setBarcode(barcode);
+        items.get(index).setDescription(description);
+        items.get(index).setManufacturer(manufacturer);
+        items.get(index).setTitle(title);
+        items.get(index).setTitle(title);
+        items.get(index).setURL(url);
+        items.get(index).setNumberOfStock(stock);
+        
+        try{
+            FileWriter writer = new FileWriter("ItemData.txt");
+            for(int i=0; i<items.size(); i++){
+                Item temp = items.get(i);
+                writer.write(
+                    temp.getId() + "/" +
+                            temp.getBarcode() + "/" +
+                            temp.getTitle() + "/" +
+                            temp.getDescription() + "/" +
+                            temp.getManufacturer() + "/" +
+                            temp.getURL() + "/" +
+                            Integer.toString(temp.getNumberOfStock()) + "\n"
+                );
+            }
+            writer.close();
+        } catch(IOException e){
+            System.out.println("An error occurred.");
+        }
     }
     
     public void insertData(String invoiceNumber, String deliveryNoteNumber, String CustomerName, String orderDate, String deliveryDate, String status){

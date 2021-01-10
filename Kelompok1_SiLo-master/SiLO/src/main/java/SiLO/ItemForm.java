@@ -260,6 +260,16 @@ public class ItemForm extends javax.swing.JFrame {
         this.itemCtl = itemCtl;
     }
     
+    public void setEditData(Item item){
+        idTF.setText(item.getId());
+        barcodeTF.setText(item.getBarcode());
+        descriptionTF.setText(item.getDescription());
+        manufacturerTF.setText(item.getManufacturer());
+        titleTF.setText(item.getTitle());
+        urlTF.setText(item.getURL());
+        numberOfStockTF.setText(String.valueOf(item.getNumberOfStock()));
+    }
+    
     private ItemCtl itemCtl;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
