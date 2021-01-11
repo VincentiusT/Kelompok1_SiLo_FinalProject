@@ -50,7 +50,25 @@ public class DBHandler {
     }
     
     public void createInvoiceData(){
-        
+        invoices = new ArrayList<Invoice>();
+        try{
+            File invoiceDb = new File("InvoiceData.txt");
+            Scanner scanner = new Scanner(invoiceDb);
+            while(scanner.hasNextLine()){
+                String data = scanner.nextLine();
+                String[] str = data.split("/");
+                Date orderDate = null;
+                Date deliveryDate = null;
+                try{
+                    orderDate = formatter.parse(str[3]);
+                    deliveryDate = formatter.parse(str[4]);
+                } catch(ParseException e){
+                    
+                }
+                
+                invoices.add(new Invoice(Integer.parseInt(str[0]), Integer.parseInt(str[1]), str[2],  orderDate, deliveryDate,str[5]));
+            }
+        } catch(FileNotFoundException e){}
     }
     
     public void createDeliveryNoteData() throws ParseException{
@@ -208,8 +226,33 @@ public class DBHandler {
         }
     }
 
-    public void changeInvoiceStatus(String status){
+    public void changeInvoiceStatus(String status, String invoiceNumber){
+        for(int i=0; i<invoices.size(); i++){
+            Invoice temp = invoices.get(i);
+            if(String.valueOf(temp.getInvoiceNumber()).equals(invoiceNumber)){
+                temp.setStatus(status);
+                break;
+            }
+        }
         
+        try{
+            FileWriter invoiceDbWriter = new FileWriter("InvoiceData.txt");
+            
+            for(int i=0; i<invoices.size(); i++){
+                Invoice temp = invoices.get(i);
+                invoiceDbWriter.write(
+                    temp.getInvoiceNumber() + "/" +
+                    temp.getPONumber() + "/" +
+                    temp.getSupplierName() + "/" +
+                    temp.getOrderDateString() + "/" +
+                    temp.getDeliveryDateString() + "/" +
+                    temp.getStatus() + "\n"
+                );
+            }
+            invoiceDbWriter.close();
+        } catch(IOException e){
+            System.out.println("An error occurred.");
+        }
     }
     
     public String[] getInvoiceDescriptionDB() {
@@ -217,8 +260,8 @@ public class DBHandler {
 
     }
 
-    String[] getListInvoice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    List<Invoice> getListInvoice() {
+        return invoices;
     }
 
     String[] getListInvoice(String keyword) {
@@ -245,4 +288,23 @@ public class DBHandler {
         return data;
     }
  
+    public List<Invoice> searchInvoice(String keyword){
+        List<Invoice> matchedInvoice = new ArrayList<Invoice>();
+        for(int i=0; i<invoices.size(); i++){
+            Invoice temp = invoices.get(i);
+            if(String.valueOf(temp.getInvoiceNumber()).contains(keyword) ||
+                String.valueOf(temp.getPONumber()).contains(keyword) ||
+                temp.getSupplierName().toLowerCase().contains(keyword) ||
+                temp.getOrderDateString().contains(keyword) ||
+                temp.getDeliveryDateString().contains(keyword) ||
+                temp.getStatus().toLowerCase().contains(keyword))
+                matchedInvoice.add(temp);
+        }
+        
+        List<Invoice> data = new ArrayList<Invoice>();
+        for(int i=0; i<matchedInvoice.size(); i++)
+            data.add(matchedInvoice.get(i));
+        
+        return data;
+    }
 }

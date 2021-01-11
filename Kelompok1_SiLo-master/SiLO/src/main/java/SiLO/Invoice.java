@@ -10,6 +10,7 @@ package SiLO;
  *
  * @author feral
  */
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Invoice {
@@ -19,7 +20,20 @@ public class Invoice {
     Date orderDate = new Date();
     Date deliveryDate = new Date();
     private String status;
+    
+    SimpleDateFormat formatter;
 
+    public Invoice(int invoiceNumber, int PONumber, String supplierName, Date orderDate, Date deliveryDate, String status){
+        this.invoiceNumber = invoiceNumber;
+        this.PONumber = PONumber;
+        this.supplierName = supplierName;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+        
+        formatter =new SimpleDateFormat("dd-MMM-yyyy"); 
+    }
+    
     public int getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -68,6 +82,12 @@ public class Invoice {
         this.status = status;
     }
     
-    
+    public String getOrderDateString() {
+        return formatter.format(orderDate);
+    }
+
+    public String getDeliveryDateString() {
+        return formatter.format(deliveryDate);
+    }
 }
 

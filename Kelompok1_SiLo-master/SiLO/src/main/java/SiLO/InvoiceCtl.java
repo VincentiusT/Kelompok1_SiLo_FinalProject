@@ -13,25 +13,35 @@ public class InvoiceCtl {
     
     private DBHandler dbHandler;
     private Mainpage mainPage;
+    private DetailInvoicePage detailInvoicePage;
     
-    public InvoiceCtl(DBHandler dbHandler){
+    int viewInvoiceIndex = 0;
+    
+    public InvoiceCtl(DBHandler dbHandler,Mainpage mainpage, DetailInvoicePage detailInvoicePage){
         this.dbHandler = dbHandler;
+        this.mainPage = mainpage;
+        this.detailInvoicePage = detailInvoicePage;
     }
     
-    public void getInvoiceDescription(){
+    public void getInvoiceDescription(Invoice invoice, int index){
         //String[] result = dbHandler.getInvoiceDescriptionDB();
         //Invoice[] invoice = createInvoice(result);
         
-        mainPage.showInvoiceDescription();
+        detailInvoicePage.setVisible(true);
+        detailInvoicePage.setCurrentInvoice(invoice);
+        viewInvoiceIndex = index;
         
-        
+        //mainPage.showInvoiceDescription();
     }
 
     private Invoice[] createInvoice(String[] result) {
         return null;
     }
 
-    void requestChangeStatus(String status) {
-        dbHandler.changeInvoiceStatus(status);
+    void requestChangeStatus(String status, String invoiceNumber) {
+        detailInvoicePage.setVisible(false);
+        dbHandler.changeInvoiceStatus(status, invoiceNumber);
+        
+        mainPage.refreshInvoiceList();
     }
 }

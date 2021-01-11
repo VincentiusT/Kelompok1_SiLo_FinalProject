@@ -5,23 +5,29 @@
  */
 package SiLO;
 
+import java.util.List;
+
 /**
  *
  * @author feral
  */
 public class ListInvoiceCtl {
     
+    private DBHandler dbHandler;
+    private Mainpage mainpage;
     
-    
-    public ListInvoiceCtl(DBHandler dbHandler){
+    public ListInvoiceCtl(DBHandler dbHandler, Mainpage mainpage){
         this.dbHandler = dbHandler;
+        this.mainpage = mainpage;
     }
     
     public void getListInvoice(){
-       
-        String[] results =   dbHandler.getListInvoice();
-        Invoice[] invoices = createInvoice(results);
-        mainpage.showDetailInvoicePage(invoices);
+        List<Invoice> invoices = dbHandler.getListInvoice();
+        mainpage.showListInvoice(invoices);
+        
+//        String[] results =   dbHandler.getListInvoice();
+//        Invoice[] invoices = createInvoice(results);
+//        mainpage.showDetailInvoicePage(invoices);
     }
     
   
@@ -32,12 +38,13 @@ public class ListInvoiceCtl {
     }
     
      public void searchInvoice(String keyword){
-        String[] results =   dbHandler.getListInvoice(keyword);
-        Invoice[] invoices = createInvoice(results);
-        mainpage.showListInvoice(invoices);
+//        String[] results =   dbHandler.getListInvoice(keyword);
+//        Invoice[] invoices = createInvoice(results);
+//        mainpage.showListInvoice(invoices);
+
+        List<Invoice> inv = dbHandler.searchInvoice(keyword);
+        mainpage.showListInvoice(inv);
     }
     
-    private DBHandler dbHandler;
-    private Invoice invoices[];
-    private Mainpage mainpage;
+    
 }

@@ -249,6 +249,14 @@ public class ItemForm extends javax.swing.JFrame {
         }
         else
             itemCtl.submit(idTF.getText(),barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText()));
+        
+        idTF.setText("");
+        barcodeTF.setText("");
+        descriptionTF.setText("");
+        manufacturerTF.setText("");
+        titleTF.setText("");
+        urlTF.setText("");
+        numberOfStockTF.setText("");
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked

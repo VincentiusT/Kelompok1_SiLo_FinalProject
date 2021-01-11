@@ -68,18 +68,17 @@ public class Mainpage extends javax.swing.JFrame {
         listDeliveryNoteCtl = new ListDeliveryNoteCtl(dbHandler,this);
         itemCtl = new ItemCtl(dbHandler,this,addNewItemForm, editItemForm);
         listItemCtl = new ListItemCtl(dbHandler,this);
-        listInvoiceCtl = new ListInvoiceCtl(dbHandler);
-        invoiceCtl = new InvoiceCtl(dbHandler);
+        listInvoiceCtl = new ListInvoiceCtl(dbHandler,this);
+        invoiceCtl = new InvoiceCtl(dbHandler, this, detailInvoicePage);
         
         addNewItemForm.setController(itemCtl, dialogBox);
         editItemForm.setController(itemCtl, dialogBox);
         deliveryNoteForm.setController(deliveryNoteCtl);
         deliveryNoteDetailPage.setController(deliveryNoteCtl);
+        detailInvoicePage.setController(invoiceCtl);
         
         deliveryNoteDetailPage.setVisible(false);
         
-        refreshItemList();
-        refreshDeliveryNoteList();
     }
 
     /**
@@ -100,10 +99,10 @@ public class Mainpage extends javax.swing.JFrame {
         btnHolder = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        invoiceTable = new javax.swing.JTable();
+        listInvoice = new javax.swing.JTable();
         searchInvoiceTF = new javax.swing.JTextField();
         searchInvoiceBtn = new javax.swing.JButton();
-        viewBtn = new javax.swing.JButton();
+        invoiceViewBtnHolder = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listDeliveryNote = new javax.swing.JTable();
@@ -224,18 +223,15 @@ public class Mainpage extends javax.swing.JFrame {
 
         searchItemBtn.getAccessibleContext().setAccessibleName("searchItemBtn");
 
-        invoiceTable.setModel(new javax.swing.table.DefaultTableModel(
+        listInvoice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Invoice Number", "PO Number", "Supplier Name", "Order Date", "Delivery Date", "Status"
             }
         ));
-        jScrollPane2.setViewportView(invoiceTable);
+        jScrollPane2.setViewportView(listInvoice);
 
         searchInvoiceTF.setText("search invoices");
 
@@ -246,26 +242,34 @@ public class Mainpage extends javax.swing.JFrame {
             }
         });
 
-        viewBtn.setText("View");
-        viewBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewBtnMouseClicked(evt);
-            }
-        });
+        javax.swing.GroupLayout invoiceViewBtnHolderLayout = new javax.swing.GroupLayout(invoiceViewBtnHolder);
+        invoiceViewBtnHolder.setLayout(invoiceViewBtnHolderLayout);
+        invoiceViewBtnHolderLayout.setHorizontalGroup(
+            invoiceViewBtnHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+        invoiceViewBtnHolderLayout.setVerticalGroup(
+            invoiceViewBtnHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 86, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(searchInvoiceTF, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchInvoiceTF)
                 .addGap(18, 18, 18)
-                .addComponent(searchInvoiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(searchInvoiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                .addComponent(viewBtn)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(424, Short.MAX_VALUE)
+                    .addComponent(invoiceViewBtnHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,9 +280,12 @@ public class Mainpage extends javax.swing.JFrame {
                     .addComponent(searchInvoiceBtn))
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(viewBtn)
-                .addContainerGap())
+                .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(72, Short.MAX_VALUE)
+                    .addComponent(invoiceViewBtnHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(40, Short.MAX_VALUE)))
         );
 
         listDeliveryNote.setModel(new javax.swing.table.DefaultTableModel(
@@ -400,9 +407,9 @@ public class Mainpage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -421,11 +428,12 @@ public class Mainpage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemMIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemMIMouseClicked
-        //listItemCtl.getListItem();
+        
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
         jPanel1.setVisible(true);
         addBtn.setVisible(true);
+        listItemCtl.getListItem();
         // TODO add your handling code here:
     }//GEN-LAST:event_itemMIMouseClicked
 
@@ -441,7 +449,7 @@ public class Mainpage extends javax.swing.JFrame {
         jPanel2.setVisible(true);
         jPanel1.setVisible(false);
         jPanel3.setVisible(false);
-      //  listInvoiceCtl.getListInvoice();
+        listInvoiceCtl.getListInvoice();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_invoiceMIMouseClicked
@@ -455,20 +463,12 @@ public class Mainpage extends javax.swing.JFrame {
     }//GEN-LAST:event_searchItemBtnActionPerformed
 
 
-    private void viewBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewBtnMouseClicked
-       detailInvoicePage.setVisible(true);
-       detailInvoicePage.setSize(300,300);
-       invoiceCtl.getInvoiceDescription();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewBtnMouseClicked
-
     private void searchItemBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchItemBtnMouseClicked
         listItemCtl.searchItem(searchItemTF.getText());
     }//GEN-LAST:event_searchItemBtnMouseClicked
 
     private void searchInvoiceBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchInvoiceBtnMouseClicked
         listInvoiceCtl.searchInvoice(searchInvoiceTF.getText());
-        // TODO add your handling code here:
     }//GEN-LAST:event_searchInvoiceBtnMouseClicked
 
     public void showDetailInvoicePage(Invoice[] invoices){
@@ -492,6 +492,8 @@ public class Mainpage extends javax.swing.JFrame {
         jPanel2.setVisible(false);
         jPanel1.setVisible(false);
         jPanel3.setVisible(true);
+        
+        listDeliveryNoteCtl.getListDeliveryNote();
     }//GEN-LAST:event_viewDeliveryNoteMenuMouseClicked
 
     public void showListDeliveryNote(List<DeliveryNote> deliveryNotes){
@@ -509,7 +511,7 @@ public class Mainpage extends javax.swing.JFrame {
                             deliveryNotes.get(i).getStatus()};
             model.addRow(row);
             
-            showDeliveryNoteEditButton(deliveryNotes, i);
+            showDeliveryNoteViewButton(deliveryNotes, i);
         }
     }
     
@@ -551,16 +553,16 @@ public class Mainpage extends javax.swing.JFrame {
         btnHolder.add(editButtons[i]);
     }
     
-    public void showDeliveryNoteEditButton(List<DeliveryNote> deliveryNotes, int i){
+    public void showDeliveryNoteViewButton(List<DeliveryNote> deliveryNotes, int i){
         dnEditButtons = new javax.swing.JButton[deliveryNotes.size()];
         
-        dnEditButtons[i] = new javax.swing.JButton("Edit");
+        dnEditButtons[i] = new javax.swing.JButton("View");
         dnEditButtons[i].setSize(60,15);
         dnEditButtons[i].setLocation(0, 16 * i);
         dnEditButtons[i].setName(deliveryNotes.get(i).toString());
         dnEditButtons[i].addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                onEditClick(deliveryNotes.get(i), i);
+                onViewClick(deliveryNotes.get(i), i);
             }
         });
             
@@ -571,14 +573,51 @@ public class Mainpage extends javax.swing.JFrame {
         itemCtl.requestEditItemForm(item, index);
     }
     
-    public void onEditClick(DeliveryNote deliveryNote, int index){
+    public void onViewClick(DeliveryNote deliveryNote, int index){
         deliveryNoteCtl.getDeliveryNoteDesciption(deliveryNote, index);
     }
     
-    public void showListInvoice(Invoice[] invoices) {
-        jPanel2.setVisible(false);
+    public void onViewClick(Invoice invoice, int index){
+        invoiceCtl.getInvoiceDescription(invoice, index);
+    }
+    
+    public void showListInvoice(List<Invoice> invoices) {
+        jPanel1.setVisible(false);
         jPanel3.setVisible(false);
-        jPanel1.setVisible(true); 
+        jPanel2.setVisible(true); 
+        
+        DefaultTableModel model = (DefaultTableModel) listInvoice.getModel();
+
+        int rowCount = listInvoice.getRowCount();
+        if(rowCount!=0){
+            for(int i = rowCount-1;i>=0;i--){
+                model.removeRow(i);
+            }
+        }
+        for(int i=0;i<invoices.size();i++){
+            Object[] row = {invoices.get(i).getInvoiceNumber(),invoices.get(i).getPONumber(),
+                            invoices.get(i).getSupplierName(),invoices.get(i).getOrderDate(),invoices.get(i).getDeliveryDate(),
+                            invoices.get(i).getStatus()};
+            model.addRow(row);
+            
+            showInvoiceViewButton(invoices, i);
+        }
+    }
+    
+    public void showInvoiceViewButton(List<Invoice> invoices, int i){
+        invoiceViewBtns = new javax.swing.JButton[invoices.size()];
+        
+        invoiceViewBtns[i] = new javax.swing.JButton("View");
+        invoiceViewBtns[i].setSize(60,15);
+        invoiceViewBtns[i].setLocation(0, 16 * i);
+        invoiceViewBtns[i].setName(invoices.get(i).toString());
+        invoiceViewBtns[i].addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onViewClick(invoices.get(i), i);
+            }
+        });
+            
+        invoiceViewBtnHolder.add(invoiceViewBtns[i]);
     }
     
     public void refreshItemList(){
@@ -590,8 +629,8 @@ public class Mainpage extends javax.swing.JFrame {
         listDeliveryNoteCtl.getListDeliveryNote();
     }
     
-    public static void showInvoiceDescription() {
-        detailInvoicePage.setVisible(true);
+    public void refreshInvoiceList(){
+        listInvoiceCtl.getListInvoice();
     }
     /**
      * @param args the command line arguments
@@ -633,7 +672,8 @@ public class Mainpage extends javax.swing.JFrame {
         }); 
         
     }
-
+    
+    private javax.swing.JButton[] invoiceViewBtns;
     private javax.swing.JButton[] dnEditButtons;
     private javax.swing.JButton[] editButtons;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -643,7 +683,7 @@ public class Mainpage extends javax.swing.JFrame {
     private javax.swing.JMenu deliveryNotesMI;
     private javax.swing.JPanel dnEditBtnHolder;
     private javax.swing.JMenu invoiceMI;
-    private javax.swing.JTable invoiceTable;
+    private javax.swing.JPanel invoiceViewBtnHolder;
     private javax.swing.JMenu itemMI;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -652,6 +692,7 @@ public class Mainpage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable listDeliveryNote;
+    private javax.swing.JTable listInvoice;
     private javax.swing.JTable listItem;
     private javax.swing.JMenuBar menuMB;
     private javax.swing.JTextField searchDeliveryNoteTF;
@@ -660,7 +701,6 @@ public class Mainpage extends javax.swing.JFrame {
     private javax.swing.JTextField searchInvoiceTF;
     private javax.swing.JButton searchItemBtn;
     private javax.swing.JTextField searchItemTF;
-    private javax.swing.JButton viewBtn;
     private javax.swing.JButton viewDeliveryNoteBtn;
     private javax.swing.JMenu viewDeliveryNoteMenu;
     // End of variables declaration//GEN-END:variables

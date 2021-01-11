@@ -172,6 +172,13 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
         confirmationMessage.setVisible(false);
         deliveryNoteCtl.addNewDeliveryNoteData(invoiceNumberTF.getText(), deliveryNoteNumberTF.getText(), customerNameTF.getText(),
                 orderDateTF.getText(), deliveryDateTF.getText(), statusTF.getText());
+        
+        invoiceNumberTF.setText("");
+        deliveryNoteNumberTF.setText("");
+        customerNameTF.setText("");
+        orderDateTF.setText("");
+        deliveryDateTF.setText("");
+        statusTF.setText("");
     }
 
     public void setController(DeliveryNoteCtl deliveryNoteCtl){
