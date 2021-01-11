@@ -19,6 +19,8 @@ public class DeliveryNoteCtl {
     private DeliveryNoteForm deliveryNoteForm;
     private DeliveryNoteDetailPage deliveryNoteDetailPage;
     
+    private int editDeliveryNoteIndex=0;
+    
     public DeliveryNoteCtl(){
         
     }
@@ -66,5 +68,11 @@ public class DeliveryNoteCtl {
         dbHandler.changeDeliveryNoteStatus(currState, deliveryNoteNumber);
         deliveryNoteDetailPage.setVisible(false);
         mainpage.refreshDeliveryNoteList();
+    }
+    
+    public void getDeliveryNoteDesciption(DeliveryNote deliveryNote,int index){
+        deliveryNoteDetailPage.setVisible(true);
+        deliveryNoteDetailPage.setCurrentDeliveryNote(deliveryNote);
+        editDeliveryNoteIndex = index;
     }
 }

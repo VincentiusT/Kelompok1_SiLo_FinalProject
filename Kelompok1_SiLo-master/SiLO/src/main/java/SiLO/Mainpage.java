@@ -110,6 +110,7 @@ public class Mainpage extends javax.swing.JFrame {
         searchDeliveryNoteTF = new javax.swing.JTextField();
         searchDeliveyNoteBtn = new javax.swing.JButton();
         viewDeliveryNoteBtn = new javax.swing.JButton();
+        dnEditBtnHolder = new javax.swing.JPanel();
         menuMB = new javax.swing.JMenuBar();
         itemMI = new javax.swing.JMenu();
         invoiceMI = new javax.swing.JMenu();
@@ -306,19 +307,35 @@ public class Mainpage extends javax.swing.JFrame {
 
         viewDeliveryNoteBtn.setText("View");
 
+        javax.swing.GroupLayout dnEditBtnHolderLayout = new javax.swing.GroupLayout(dnEditBtnHolder);
+        dnEditBtnHolder.setLayout(dnEditBtnHolderLayout);
+        dnEditBtnHolderLayout.setHorizontalGroup(
+            dnEditBtnHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 66, Short.MAX_VALUE)
+        );
+        dnEditBtnHolderLayout.setVerticalGroup(
+            dnEditBtnHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(searchDeliveryNoteTF, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchDeliveyNoteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(viewDeliveryNoteBtn)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewDeliveryNoteBtn))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(428, Short.MAX_VALUE)
+                    .addComponent(dnEditBtnHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,10 +344,15 @@ public class Mainpage extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchDeliveryNoteTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchDeliveyNoteBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(viewDeliveryNoteBtn))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addContainerGap(65, Short.MAX_VALUE)
+                    .addComponent(dnEditBtnHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(33, Short.MAX_VALUE)))
         );
 
         itemMI.setText("Item");
@@ -377,11 +399,10 @@ public class Mainpage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -488,7 +509,7 @@ public class Mainpage extends javax.swing.JFrame {
                             deliveryNotes.get(i).getStatus()};
             model.addRow(row);
             
-            //showEditButton(delivery, i);
+            showDeliveryNoteEditButton(deliveryNotes, i);
         }
     }
     
@@ -510,11 +531,11 @@ public class Mainpage extends javax.swing.JFrame {
             Object[] row = {items.get(i).getId(), items.get(i).getTitle(), items.get(i).getManufacturer(), items.get(i).getNumberOfStock()};
             model.addRow(row);
             
-            showEditButton(items, i);
+            showItemEditButton(items, i);
         }
     }
     
-    public void showEditButton(List<Item> items, int i){
+    public void showItemEditButton(List<Item> items, int i){
         editButtons = new javax.swing.JButton[items.size()];
         
         editButtons[i] = new javax.swing.JButton("Edit");
@@ -530,8 +551,28 @@ public class Mainpage extends javax.swing.JFrame {
         btnHolder.add(editButtons[i]);
     }
     
+    public void showDeliveryNoteEditButton(List<DeliveryNote> deliveryNotes, int i){
+        dnEditButtons = new javax.swing.JButton[deliveryNotes.size()];
+        
+        dnEditButtons[i] = new javax.swing.JButton("Edit");
+        dnEditButtons[i].setSize(60,15);
+        dnEditButtons[i].setLocation(0, 16 * i);
+        dnEditButtons[i].setName(deliveryNotes.get(i).toString());
+        dnEditButtons[i].addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onEditClick(deliveryNotes.get(i), i);
+            }
+        });
+            
+        dnEditBtnHolder.add(dnEditButtons[i]);
+    }
+    
     public void onEditClick(Item item, int index){
         itemCtl.requestEditItemForm(item, index);
+    }
+    
+    public void onEditClick(DeliveryNote deliveryNote, int index){
+        deliveryNoteCtl.getDeliveryNoteDesciption(deliveryNote, index);
     }
     
     public void showListInvoice(Invoice[] invoices) {
@@ -593,12 +634,14 @@ public class Mainpage extends javax.swing.JFrame {
         
     }
 
+    private javax.swing.JButton[] dnEditButtons;
     private javax.swing.JButton[] editButtons;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JPanel btnHolder;
     private javax.swing.JMenu createDeliveryNoteMenu;
     private javax.swing.JMenu deliveryNotesMI;
+    private javax.swing.JPanel dnEditBtnHolder;
     private javax.swing.JMenu invoiceMI;
     private javax.swing.JTable invoiceTable;
     private javax.swing.JMenu itemMI;
