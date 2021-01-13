@@ -14,12 +14,12 @@ public class ItemCtl {
     int editItemIndex = 0;
     
     private DBHandler dbhandler;
-    private Mainpage mainpage;
+    private MainPage mainpage;
     
     private ItemForm addNewItemForm;
     private ItemForm editItemForm;
     
-    public ItemCtl(DBHandler dbHandler,Mainpage mainpage, ItemForm addNewItemForm, ItemForm editItemForm){
+    public ItemCtl(DBHandler dbHandler,MainPage mainpage, ItemForm addNewItemForm, ItemForm editItemForm){
         this.addNewItemForm = addNewItemForm;
         this.editItemForm = editItemForm;
         this.dbhandler = dbHandler;

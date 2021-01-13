@@ -12,12 +12,12 @@ package SiLO;
 public class InvoiceCtl {
     
     private DBHandler dbHandler;
-    private Mainpage mainPage;
+    private MainPage mainPage;
     private DetailInvoicePage detailInvoicePage;
     
     int viewInvoiceIndex = 0;
     
-    public InvoiceCtl(DBHandler dbHandler,Mainpage mainpage, DetailInvoicePage detailInvoicePage){
+    public InvoiceCtl(DBHandler dbHandler,MainPage mainpage, DetailInvoicePage detailInvoicePage){
         this.dbHandler = dbHandler;
         this.mainPage = mainpage;
         this.detailInvoicePage = detailInvoicePage;

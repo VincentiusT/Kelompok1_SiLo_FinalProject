@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author feral
  */
-public class Mainpage extends javax.swing.JFrame {
+public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
@@ -44,10 +44,12 @@ public class Mainpage extends javax.swing.JFrame {
 //    private ItemForm addNewItemForm;
 //    private DeliveryNoteForm deliveryNoteForm;
 //    private DeliveryNoteCtl deliveryNoteCtl;
+//    private ListDeliveryNoteCtl listDeliveryNoteCtl;
 //    private ListItemCtl listItemCtl;
 //    private ItemCtl itemCtl;
+//    private DialogBox dialogBox;
     
-    public Mainpage() throws ParseException {
+    public MainPage() throws ParseException {
         
         initComponents();
         jPanel1.setVisible(false);
@@ -166,6 +168,12 @@ public class Mainpage extends javax.swing.JFrame {
         searchItemBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchItemBtnActionPerformed(evt);
+            }
+        });
+
+        btnHolder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHolderMouseClicked(evt);
             }
         });
 
@@ -496,6 +504,10 @@ public class Mainpage extends javax.swing.JFrame {
         listDeliveryNoteCtl.getListDeliveryNote();
     }//GEN-LAST:event_viewDeliveryNoteMenuMouseClicked
 
+    private void btnHolderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHolderMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHolderMouseClicked
+
     public void showListDeliveryNote(List<DeliveryNote> deliveryNotes){
         DefaultTableModel model = (DefaultTableModel) listDeliveryNote.getModel();
 
@@ -534,6 +546,7 @@ public class Mainpage extends javax.swing.JFrame {
             model.addRow(row);
             
             showItemEditButton(items, i);
+            
         }
     }
     
@@ -649,14 +662,16 @@ public class Mainpage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mainpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mainpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mainpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mainpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -664,9 +679,9 @@ public class Mainpage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Mainpage().setVisible(true);
+                    new MainPage().setVisible(true);
                 } catch (ParseException ex) {
-                    Logger.getLogger(Mainpage.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }); 

@@ -15,9 +15,9 @@ public class ListItemCtl {
 
     private DBHandler dbHandler;
     private Item item[];
-    private Mainpage mainpage;
+    private MainPage mainpage;
     
-    public ListItemCtl(DBHandler dbHandler, Mainpage mainpage){
+    public ListItemCtl(DBHandler dbHandler, MainPage mainpage){
         this.dbHandler = dbHandler;
         this.mainpage = mainpage;
     }

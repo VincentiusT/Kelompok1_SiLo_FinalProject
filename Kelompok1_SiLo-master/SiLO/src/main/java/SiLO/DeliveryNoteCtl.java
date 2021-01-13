@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class DeliveryNoteCtl {
     
-    private Mainpage mainpage;
+    private MainPage mainpage;
     private DBHandler dbHandler;
     private DeliveryNoteForm deliveryNoteForm;
     private DeliveryNoteDetailPage deliveryNoteDetailPage;
@@ -25,7 +25,7 @@ public class DeliveryNoteCtl {
         
     }
     
-    public DeliveryNoteCtl(DBHandler dbHandler,Mainpage mainpage,DeliveryNoteForm deliveryNoteForm, DeliveryNoteDetailPage deliveryNoteDetailPage){
+    public DeliveryNoteCtl(DBHandler dbHandler,MainPage mainpage,DeliveryNoteForm deliveryNoteForm, DeliveryNoteDetailPage deliveryNoteDetailPage){
         this.deliveryNoteForm = deliveryNoteForm;
         this.deliveryNoteDetailPage = deliveryNoteDetailPage;
         this.dbHandler = dbHandler;

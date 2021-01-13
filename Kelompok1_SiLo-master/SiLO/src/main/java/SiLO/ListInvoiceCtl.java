@@ -14,9 +14,9 @@ import java.util.List;
 public class ListInvoiceCtl {
     
     private DBHandler dbHandler;
-    private Mainpage mainpage;
+    private MainPage mainpage;
     
-    public ListInvoiceCtl(DBHandler dbHandler, Mainpage mainpage){
+    public ListInvoiceCtl(DBHandler dbHandler, MainPage mainpage){
         this.dbHandler = dbHandler;
         this.mainpage = mainpage;
     }

@@ -14,9 +14,9 @@ import java.util.List;
 public class ListDeliveryNoteCtl {
     
     private DBHandler dbHandler;
-    private Mainpage mainpage;
+    private MainPage mainpage;
     
-    public ListDeliveryNoteCtl(DBHandler dBHandler, Mainpage mainpage){
+    public ListDeliveryNoteCtl(DBHandler dBHandler, MainPage mainpage){
         this.dbHandler = dBHandler;
         this.mainpage = mainpage;
     }
