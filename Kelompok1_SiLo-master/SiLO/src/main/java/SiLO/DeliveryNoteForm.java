@@ -6,6 +6,7 @@
 package SiLO;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -16,9 +17,11 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
     /**
      * Creates new form DeliveryNoteForm
      */
+    SimpleDateFormat formatter; 
+    
     public DeliveryNoteForm() {
         initComponents();
-        
+        formatter = new SimpleDateFormat("dd-MMM-yyyy");
         confirmationMessage = new ConfirmationMessage(this);
         confirmationMessage.setVisible(false);
     }
@@ -140,8 +143,8 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
     
     public void confirm() throws ParseException{
         confirmationMessage.setVisible(false);
-        deliveryNoteCtl.addNewDeliveryNoteData(invoiceNumberTF.getText(), deliveryNoteNumberTF.getText(), customerNameTF.getText(),
-                orderDateTF.getText(), deliveryDateTF.getText(), statusTF.getText());
+        deliveryNoteCtl.addNewDeliveryNoteData(new DeliveryNote(Integer.parseInt(invoiceNumberTF.getText()), Integer.parseInt(deliveryNoteNumberTF.getText()), customerNameTF.getText(),
+                formatter.parse(orderDateTF.getText()), formatter.parse(deliveryDateTF.getText()), statusTF.getText()));
         
         invoiceNumberTF.setText("");
         deliveryNoteNumberTF.setText("");

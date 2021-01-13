@@ -24,6 +24,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Delivery Notes"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deliveryNotesMIMouseClicked"/>
+          </Events>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="createDeliveryNoteMenu">
               <Properties>
@@ -31,14 +34,6 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="createDeliveryNoteMenuMouseClicked"/>
-              </Events>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="viewDeliveryNoteMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="View Delivery Notes List"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="viewDeliveryNoteMenuMouseClicked"/>
               </Events>
             </Menu>
           </SubComponents>
@@ -401,9 +396,8 @@
                           <Component id="searchDeliveyNoteBtn" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane3" min="-2" pref="422" max="-2" attributes="0"/>
-                      <Component id="viewDeliveryNoteBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -424,8 +418,7 @@
                   </Group>
                   <EmptySpace pref="7" max="32767" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="viewDeliveryNoteBtn" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -513,11 +506,6 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchDeliveyNoteBtnMouseClicked"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="viewDeliveryNoteBtn">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="View"/>
-          </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="dnEditBtnHolder">
 

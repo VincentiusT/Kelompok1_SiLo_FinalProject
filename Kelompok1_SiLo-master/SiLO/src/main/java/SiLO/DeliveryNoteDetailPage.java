@@ -5,6 +5,11 @@
  */
 package SiLO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author VincentT
@@ -16,9 +21,11 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
      */
     //public DBHandler dbHandler;
     
+    SimpleDateFormat formatter;
+    
     public DeliveryNoteDetailPage() {
         initComponents();
-        
+        formatter = new SimpleDateFormat("dd-MMM-yyyy");
         sendingForm = new SendingForm(this);
         printDialog = new PrintDialog(this);
     }
@@ -198,8 +205,12 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
 
     private void emailBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailBtnMouseClicked
         sendingForm.setVisible(true); //show sending form
-        sendingForm.setSendingForm( invoiceNumberLbl.getText(), deliveryDateLbl.getText(), customerNameLbl.getText()
-                    ,orderDateLbl.getText(), deliveryDateLbl.getText(), statusLbl.getText());
+        try {
+            sendingForm.setSendingForm( new DeliveryNote(Integer.parseInt(invoiceNumberLbl.getText()),Integer.parseInt(deliveryNoteNumberLbl.getText()),customerNameLbl.getText()
+                    ,formatter.parse(orderDateLbl.getText()),formatter.parse( deliveryDateLbl.getText()), statusLbl.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_emailBtnMouseClicked
 
     private void printBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printBtnMouseClicked
@@ -240,7 +251,7 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         
     }
     
-    public void setCurrentDeliveryNote(DeliveryNote dn){
+    public void setDeliveryNoteData(DeliveryNote dn){
         invoiceNumberLbl.setText(String.valueOf(dn.getInvoiceNumber()));
         deliveryNoteNumberLbl.setText(String.valueOf(dn.getDeliveryNoteNumber()));
         customerNameLbl.setText(dn.getCustomerName());

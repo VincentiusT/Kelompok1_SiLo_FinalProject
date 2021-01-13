@@ -16,8 +16,7 @@ public class SendingForm extends javax.swing.JFrame {
      */
     public SendingForm(DeliveryNoteDetailPage deliveryNoteDetailPage) {
         initComponents();
-        
-       
+
         this.deliveryNoteDetailPage = deliveryNoteDetailPage;
     }
 
@@ -178,14 +177,13 @@ public class SendingForm extends javax.swing.JFrame {
      */
 
 
-    public void setSendingForm( String invoiceNumber, String deliveryNoteNumber, String customerName,
-            String orderDate, String deliveryDate, String status){
-        invoiceNumberLbl.setText(invoiceNumber);
-        deliveryDateLbl.setText(deliveryNoteNumber);
-        customerNameLbl.setText(customerName);
-        orderDateLbl.setText(orderDate);
-        deliveryDateLbl.setText(deliveryDate);
-        statusLbl.setText(status);
+    public void setSendingForm( DeliveryNote dn){
+        invoiceNumberLbl.setText(String.valueOf(dn.getInvoiceNumber()));
+        deliveryNoteNumberLbl.setText(String.valueOf(dn.getDeliveryNoteNumber()));
+        customerNameLbl.setText(dn.getCustomerName());
+        orderDateLbl.setText(dn.getOrderDateString());
+        deliveryDateLbl.setText(dn.getDeliveryDateString());
+        statusLbl.setText(dn.getStatus());
     }
     
     private DeliveryNoteDetailPage deliveryNoteDetailPage;

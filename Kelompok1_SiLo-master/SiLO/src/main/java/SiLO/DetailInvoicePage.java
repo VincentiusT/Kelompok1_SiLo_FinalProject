@@ -163,7 +163,7 @@ public class DetailInvoicePage extends javax.swing.JFrame {
      */
 
 
-    public void setCurrentInvoice(Invoice invoice){
+    public void setInvoiceData(Invoice invoice){
         invoiceNumberLbl.setText(String.valueOf(invoice.getInvoiceNumber()));
         poNumberLbl.setText(String.valueOf(invoice.getPONumber()));
         supplierNumberLbl.setText(invoice.getSupplierName());

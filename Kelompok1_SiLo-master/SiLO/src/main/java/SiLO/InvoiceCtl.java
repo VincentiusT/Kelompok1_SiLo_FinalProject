@@ -28,7 +28,7 @@ public class InvoiceCtl {
         //Invoice[] invoice = createInvoice(result);
         
         detailInvoicePage.setVisible(true);
-        detailInvoicePage.setCurrentInvoice(invoice);
+        detailInvoicePage.setInvoiceData(invoice);
         viewInvoiceIndex = index;
         
         //mainPage.showInvoiceDescription();

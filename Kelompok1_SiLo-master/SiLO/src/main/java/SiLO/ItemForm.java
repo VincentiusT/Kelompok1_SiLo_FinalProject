@@ -242,13 +242,13 @@ public class ItemForm extends javax.swing.JFrame {
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
-        System.out.println("sdjasabfiusdfisud :_" + idTF.getText()+"_");
-        if(idTF.getText().equals("") || barcodeTF.getText().equals("") || descriptionTF.getText().equals("") ||
-                manufacturerTF.getText().equals("") || titleTF.getText().equals("") || urlTF.getText().equals("") ||numberOfStockTF.getText().equals("") ){
+
+        if(idTF.getText().isEmpty() || barcodeTF.getText().isEmpty() || descriptionTF.getText().isEmpty()||
+                manufacturerTF.getText().isEmpty() || titleTF.getText().isEmpty() || urlTF.getText().isEmpty() ||numberOfStockTF.getText().isEmpty() ){
             dialogBox.setVisible(true);
         }
         else
-            itemCtl.submit(idTF.getText(),barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText()));
+            itemCtl.submit(new Item(idTF.getText(),barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText())));
         
         idTF.setText("");
         barcodeTF.setText("");
@@ -260,7 +260,7 @@ public class ItemForm extends javax.swing.JFrame {
     }//GEN-LAST:event_submitBtnMouseClicked
 
     private void updateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateBtnMouseClicked
-        itemCtl.update(idTF.getText(),barcodeTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), titleTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText()));
+        itemCtl.update(new Item(idTF.getText(),barcodeTF.getText(), titleTF.getText(), descriptionTF.getText(), manufacturerTF.getText(), urlTF.getText(), Integer.parseInt(numberOfStockTF.getText())));
     }//GEN-LAST:event_updateBtnMouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed

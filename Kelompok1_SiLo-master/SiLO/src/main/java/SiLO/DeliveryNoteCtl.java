@@ -36,21 +36,15 @@ public class DeliveryNoteCtl {
         deliveryNoteForm.setVisible(true);
     }
     
-    public void showDeliveryNoteDescription(DeliveryNote dn){
-        deliveryNoteDetailPage.setVisible(true);
-        deliveryNoteDetailPage.setCurrentDeliveryNote(dn);
-    }
     
-    public void addNewDeliveryNoteData(String invoiceNumber,String deliveryNoteNumber,String customerName,String orderDate,
-            String deliveryDate,String status) throws ParseException{
-        dbHandler.insertData(invoiceNumber, deliveryNoteNumber, customerName, orderDate, deliveryDate, status);
-//        System.out.println(invoiceNumber+deliveryNoteNumber+customerName+ orderDate+ deliveryDate+status);
+    public void addNewDeliveryNoteData(DeliveryNote deliveryNote) throws ParseException{
+        
         deliveryNoteForm.setVisible(false);
+        dbHandler.insertData(deliveryNote);
         
-        int lastIdx = dbHandler.getListDeliveryNote().size();
-        DeliveryNote dn = dbHandler.getListDeliveryNote().get(lastIdx-1);
+        deliveryNoteDetailPage.setVisible(true);
+        deliveryNoteDetailPage.setDeliveryNoteData(deliveryNote);
         
-        showDeliveryNoteDescription(dn);
         mainpage.refreshDeliveryNoteList();
     }
     
@@ -72,7 +66,7 @@ public class DeliveryNoteCtl {
     
     public void getDeliveryNoteDesciption(DeliveryNote deliveryNote,int index){
         deliveryNoteDetailPage.setVisible(true);
-        deliveryNoteDetailPage.setCurrentDeliveryNote(deliveryNote);
+        deliveryNoteDetailPage.setDeliveryNoteData(deliveryNote);
         editDeliveryNoteIndex = index;
     }
 }

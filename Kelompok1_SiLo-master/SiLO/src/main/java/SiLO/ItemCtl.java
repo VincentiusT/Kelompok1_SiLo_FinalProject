@@ -40,15 +40,17 @@ public class ItemCtl {
         editItemIndex = index;
     }
     
-    public void submit(String id, String barcode,String description, String manufacturer, String title, String url, int stock){
+    
+    
+    public void submit(Item item){
         addNewItemForm.setVisible(false);
-        dbhandler.insertData(id,barcode, description, manufacturer, title, url,stock); 
+        dbhandler.insertData(item); 
         mainpage.refreshItemList();
     }
     
-    public void update(String id,String barcode,String description, String manufacturer, String title, String url, int stock){
+    public void update(Item item){
         editItemForm.setVisible(false);
-        dbhandler.updateData(id, barcode, description, manufacturer, title, url,stock, editItemIndex);
+        dbhandler.updateData(item, editItemIndex);
         mainpage.refreshItemList();
     }
     

@@ -118,9 +118,9 @@ public class DBHandler {
         return data;
     }
     
-    public void insertData(String id,String barcode,String description, String manufacturer, String title, String url, int stock){
+    public void insertData(Item newItem){
         //insert item data to database
-        items.add(new Item(id,barcode,description, manufacturer, title, url, stock));
+        items.add(newItem);
         try{
             FileWriter writer = new FileWriter("ItemData.txt");
             for(int i=0; i<items.size(); i++){
@@ -142,17 +142,16 @@ public class DBHandler {
     }
 
     
-    public void updateData(String id,String barcode,String description, String manufacturer, String title, String url, int stock, int index)
+    public void updateData(Item item,int index)
     {
         //update item data to database
-        items.get(index).setId(id);
-        items.get(index).setBarcode(barcode);
-        items.get(index).setDescription(description);
-        items.get(index).setManufacturer(manufacturer);
-        items.get(index).setTitle(title);
-        items.get(index).setTitle(title);
-        items.get(index).setURL(url);
-        items.get(index).setNumberOfStock(stock);
+        items.get(index).setId(item.getId());
+        items.get(index).setBarcode(item.getBarcode());
+        items.get(index).setDescription(item.getDescription());
+        items.get(index).setManufacturer(item.getManufacturer());
+        items.get(index).setTitle(item.getTitle());
+        items.get(index).setURL(item.getURL());
+        items.get(index).setNumberOfStock(item.getNumberOfStock());
         
         try{
             FileWriter writer = new FileWriter("ItemData.txt");
@@ -174,9 +173,9 @@ public class DBHandler {
         }
     }
     
-    public void insertData(String invoiceNumber, String deliveryNoteNumber, String CustomerName, String orderDate, String deliveryDate, String status) throws ParseException{
+    public void insertData(DeliveryNote deliveryNote) throws ParseException{
         //insert delivery note data to database
-        deliveryNotes.add(new DeliveryNote(Integer.parseInt(invoiceNumber), Integer.parseInt(deliveryNoteNumber), CustomerName, formatter.parse(orderDate), formatter.parse(deliveryDate), status));
+        deliveryNotes.add(deliveryNote);
         try{
             FileWriter writer = new FileWriter("DeliveryNoteData.txt");
             for(int i=0; i<deliveryNotes.size(); i++){
